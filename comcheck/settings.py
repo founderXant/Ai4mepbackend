@@ -16,6 +16,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# WE NEED TO DOUBLE CHECK THAT THERE ARE FILE STORAGE LOCATIONS
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--@)he8nt@^ybps6g@nhn6b^))0x_z0#fum5pp*z6+u%p68*942'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -166,3 +167,6 @@ USER_INPUT_FILE = 'user_inputs.json'
 STARTING_XML_FILE = 'empty.cxl'
 XML_ELEMENTS_INFO_FILE = 'elements_info.json'
 XML_OUTPUT_FILE = 'xml_output.cxl'
+EXCEL_OUTPUT_FILE = 'output.xlsx'
+PDF_STORAGE_PATH = os.path.join(MEDIA_ROOT, 'pdfs')
+

@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from comcheck.utils import PDFScraper
 from app.constants import *
+from django.conf import settings
 import os
 import json
 import xml.etree.ElementTree as ET
@@ -25,7 +26,8 @@ from PyPDF2 import PdfReader
 
 class DownloadExcel(APIView):
     def get(self, request,):
-        filepath = r'D:\example_location\output.xlsx'
+        filepath = settings.EXCEL_OUTPUT_FILE
+        # NEEDS ENVIRONMENT VARIABLE
         return FileResponse(open(filepath, 'rb'), as_attachment=True, filename='output.xlsx')
 
 class CSAAUnitScheduler(APIView):
@@ -36,7 +38,8 @@ class CSAAUnitScheduler(APIView):
 
         # Save the PDF file to a temporary location
         pdf_file = request.FILES['pdf']
-        fs = FileSystemStorage(location=r'D:\example_location')
+        fs = FileSystemStorage(location=settings.PDF_STORAGE_PATH)
+        # NEEDS ENVIRONMENT VARIABLE
         pdf_path = fs.save(pdf_file.name, pdf_file)
         
 
